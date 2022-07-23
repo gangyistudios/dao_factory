@@ -1,10 +1,23 @@
 import 'package:flutter_dao_factory/models/user.dart';
+import 'package:hive_flutter/hive_flutter.dart';
 
 import 'user_dao.dart';
 
 class UserDAOHiveImpl implements UserDAO {
+  late final Box<User> userBox;
+  bool _isHiveInit = false;
+
   @override
-  void init() {}
+  void init() async {
+    if (!_isHiveInit) {
+      await Hive.initFlutter('hiveDb');
+      if (!Hive.isAdapterRegistered(0)) {
+        Hive.registerAdapter(UserAdapter());
+      }
+      userBox = await Hive.openBox<User>('userBox');
+      _isHiveInit = true;
+    }
+  }
 
   @override
   String getTitle() {
@@ -13,7 +26,7 @@ class UserDAOHiveImpl implements UserDAO {
 
   @override
   void addUser(User user) {
-    // TODO: implement addUser
+    userBox.add(user);
   }
 
   @override
