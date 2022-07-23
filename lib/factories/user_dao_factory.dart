@@ -1,3 +1,4 @@
+import '../config.dart';
 import '../daos/daos.dart';
 import '../models/models.dart';
 
@@ -18,9 +19,9 @@ class UserDAOFactory {
   ///   return UserDAOHiveImpl();
   /// }
   /// ```
-  static Future<UserDAO> getUserDAO(DBType type) async {
+  static Future<UserDAO> getUserDAO() async {
     UserDAO userDAO;
-    if (type == DBType.hive) {
+    if (Config.dbType == DBType.hive) {
       userDAO = UserDAOHiveImpl();
     } else {
       userDAO = UserDAOSqfLiteImpl();

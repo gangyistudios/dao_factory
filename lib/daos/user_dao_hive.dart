@@ -11,7 +11,7 @@ class UserDAOHiveImpl implements UserDAO {
   Future<void> init() async {
     if (!_isHiveInit) {
       await Hive.initFlutter('hiveDb');
-      if (!Hive.isAdapterRegistered(0)) {
+      if (!Hive.isAdapterRegistered(1)) {
         Hive.registerAdapter(UserAdapter());
       }
       userBox = await Hive.openBox<User>('userBox');

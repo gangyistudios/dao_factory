@@ -18,7 +18,7 @@ class UserProvider extends ChangeNotifier {
   UserProvider();
 
   void init() async {
-    UserDAOFactory.getUserDAO(DBType.hive);
+    UserDAOFactory.getUserDAO();
   }
 
   String get firstName {
@@ -58,7 +58,7 @@ class UserProvider extends ChangeNotifier {
     /// In actual use cases, we can move that logic into the [UserDAOFactory]
     /// class, however passing the value in through the [DBType] for demonstration
     /// purposes.
-    UserDAO userDao = await UserDAOFactory.getUserDAO(DBType.hive);
+    UserDAO userDao = await UserDAOFactory.getUserDAO();
 
     /// This is what all the work was for. The application does not need to
     /// know, & does not know, what implementation is being used for [UserDAO]
@@ -66,5 +66,11 @@ class UserProvider extends ChangeNotifier {
     userDao.addUser(user);
     log('added user $user');
     notifyListeners();
+  }
+
+  Future<List<User>> getUsers() async {
+    UserDAO userDao = await UserDAOFactory.getUserDAO();
+    List<User> users = userDao.getUsers();
+    return users;
   }
 }
