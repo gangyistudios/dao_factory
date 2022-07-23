@@ -8,7 +8,7 @@ class UserDAOHiveImpl implements UserDAO {
   bool _isHiveInit = false;
 
   @override
-  void init() async {
+  Future<void> init() async {
     if (!_isHiveInit) {
       await Hive.initFlutter('hiveDb');
       if (!Hive.isAdapterRegistered(0)) {

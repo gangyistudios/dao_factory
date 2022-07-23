@@ -8,7 +8,7 @@ abstract class UserDAO {
   String getTitle();
 
   /// Initialise dao
-  void init();
+  Future<void> init();
 
   /// Returns a list of all persisted users
   List<User> getUsers();

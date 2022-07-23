@@ -4,7 +4,10 @@ import 'user_dao.dart';
 
 class UserDAOSqfLiteImpl implements UserDAO {
   @override
-  void init() {}
+  Future<void> init() {
+    // TODO: implement init
+    throw UnimplementedError();
+  }
 
   @override
   String getTitle() {

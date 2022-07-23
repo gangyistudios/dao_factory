@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 
 import 'dao_selection.dart';
 import 'daos/daos.dart';
+import 'providers/providers.dart';
+import 'widgets/widgets.dart';
 
 void main() {
   runApp(const MyApp());
@@ -43,50 +45,22 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          DAOSelection(
-            userDAOList: userDAOList,
-            selectedIndex: _selectedUserDAOIndex,
-            onChanged: _setSelectedUserDAOIndex,
-          ),
-          const DataDisplay(),
-        ],
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => UserProvider(),
+      child: Scaffold(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            DAOSelection(
+              userDAOList: userDAOList,
+              selectedIndex: _selectedUserDAOIndex,
+              onChanged: _setSelectedUserDAOIndex,
+            ),
+            const NewUserForm(),
+            const DataDisplay(),
+          ],
+        ),
       ),
-    );
-  }
-}
-
-class DataDisplay extends StatelessWidget {
-  const DataDisplay({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      children: const [
-        DisplayBox(title: 'HIVE DB'),
-        DisplayBox(title: 'SQFLITE DB'),
-      ],
-    );
-  }
-}
-
-class DisplayBox extends StatelessWidget {
-  const DisplayBox({Key? key, required this.title}) : super(key: key);
-
-  final String title;
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(24.0),
-      child: Column(children: [
-        Text(title),
-        Container(child: Placeholder()),
-      ]),
     );
   }
 }
