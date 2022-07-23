@@ -15,6 +15,9 @@ class UserProvider extends ChangeNotifier {
   late String _lastName;
   late int _age;
 
+  /// Default DB type is Hive
+  DBType _dbType = DBType.hive;
+
   UserProvider();
 
   String get firstName {
@@ -44,7 +47,16 @@ class UserProvider extends ChangeNotifier {
     _age = age;
   }
 
-  void addUser(DBType dbType) async {
+  DBType get dbType {
+    return _dbType;
+  }
+
+  set dbType(DBType dbType) {
+    log('setting dbType to $dbType');
+    _dbType = dbType;
+  }
+
+  void addUser() async {
     /// This is only called after form was validated on submission, so we can
     /// safely assume firstName, lastName & age are populated. Hence, create new
     /// User object.
@@ -64,7 +76,7 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<User>> getUsers(DBType dbType) async {
+  Future<List<User>> getUsers() async {
     UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
     List<User> users = userDao.getUsers();
     return users;
