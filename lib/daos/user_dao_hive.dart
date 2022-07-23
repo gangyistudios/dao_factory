@@ -4,6 +4,9 @@ import 'user_dao.dart';
 
 class UserDAOHiveImpl implements UserDAO {
   @override
+  void init() {}
+
+  @override
   String getTitle() {
     return 'UserDAOHiveImpl';
   }

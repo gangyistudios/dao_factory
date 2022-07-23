@@ -7,6 +7,9 @@ abstract class UserDAO {
   /// Returns the name of the Implementation
   String getTitle();
 
+  /// Initialise dao
+  void init();
+
   /// Returns a list of all persisted users
   List<User> getUsers();
 
