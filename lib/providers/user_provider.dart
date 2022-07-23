@@ -17,10 +17,6 @@ class UserProvider extends ChangeNotifier {
 
   UserProvider();
 
-  void init() async {
-    UserDAOFactory.getUserDAO();
-  }
-
   String get firstName {
     return _firstName;
   }
@@ -48,7 +44,7 @@ class UserProvider extends ChangeNotifier {
     _age = age;
   }
 
-  void addUser() async {
+  void addUser(DBType dbType) async {
     /// This is only called after form was validated on submission, so we can
     /// safely assume firstName, lastName & age are populated. Hence, create new
     /// User object.
@@ -58,7 +54,7 @@ class UserProvider extends ChangeNotifier {
     /// In actual use cases, we can move that logic into the [UserDAOFactory]
     /// class, however passing the value in through the [DBType] for demonstration
     /// purposes.
-    UserDAO userDao = await UserDAOFactory.getUserDAO();
+    UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
 
     /// This is what all the work was for. The application does not need to
     /// know, & does not know, what implementation is being used for [UserDAO]
@@ -68,8 +64,8 @@ class UserProvider extends ChangeNotifier {
     notifyListeners();
   }
 
-  Future<List<User>> getUsers() async {
-    UserDAO userDao = await UserDAOFactory.getUserDAO();
+  Future<List<User>> getUsers(DBType dbType) async {
+    UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
     List<User> users = userDao.getUsers();
     return users;
   }

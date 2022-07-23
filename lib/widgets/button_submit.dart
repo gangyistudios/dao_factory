@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
 import '../providers/providers.dart';
 
 class SubmitButton extends StatelessWidget {
@@ -22,7 +23,8 @@ class SubmitButton extends StatelessWidget {
             /// the UserProvider's age, firstName & lastName variables, which are
             /// then persisted through a call to its addUser() method.
             _formKey.currentState!.save();
-            Provider.of<UserProvider>(context, listen: false).addUser();
+            Provider.of<UserProvider>(context, listen: false)
+                .addUser(DBType.hive);
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Saved')),
             );

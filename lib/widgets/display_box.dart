@@ -1,32 +1,39 @@
 import 'package:flutter/material.dart';
 
+import '../models/models.dart';
 import '../providers/providers.dart';
 
 class DisplayBox extends StatelessWidget {
-  const DisplayBox({Key? key, required this.title}) : super(key: key);
+  const DisplayBox({Key? key, required this.title, required this.dbType})
+      : super(key: key);
 
   final String title;
+  final DBType dbType;
 
   @override
   Widget build(BuildContext context) {
     /// Wrapping in a consumer so that the DB viz is subscribed to any changes
     /// and then returning a Futurebuilder as getUsers() is an async method.
     return Consumer<UserProvider>(
-      builder: (context, userProvider, child) => FutureBuilder(
-        future: userProvider.getUsers(),
-        builder: (context, snapshot) => Padding(
-          padding: const EdgeInsets.all(24.0),
-          child: Column(
-            children: [
-              Text(title),
-              Container(
-                child: Text(
-                  snapshot.hasData ? snapshot.data.toString() : 'Loading',
-                ),
-              ),
-            ],
-          ),
-        ),
+      builder: (context, userProvider, child) => FutureBuilder<List<User>>(
+        future: userProvider.getUsers(dbType),
+        builder: (context, snapshot) {
+          return Padding(
+            padding: const EdgeInsets.all(24.0),
+            child: Column(
+              children: [
+                Text(title),
+                snapshot.hasData
+                    ? Column(
+                        children: snapshot.data!
+                            .map((user) => Text(user.toString()))
+                            .toList(),
+                      )
+                    : const Text('Loading')
+              ],
+            ),
+          );
+        },
       ),
     );
   }
