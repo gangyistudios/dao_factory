@@ -2,6 +2,8 @@
 
 Implementing the dao factory pattern in Flutter. 
 
+Demonstrates the use of varied DAO implementations as defined in a configuration file, as well as switching the DAO  implmentation during runtime. 
+
 References: 
 https://refactoring.guru/design-patterns/factory-method
 https://medium.com/flutter-community/flutter-design-patterns-10-factory-method-c53ad11d863f 
