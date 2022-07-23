@@ -4,6 +4,11 @@ import 'user_dao.dart';
 
 class UserDAOSqfLiteImpl implements UserDAO {
   @override
+  String getTitle() {
+    return 'UserDAOSqfLiteImpl';
+  }
+
+  @override
   void addUser(User user) {
     // TODO: implement addUser
   }

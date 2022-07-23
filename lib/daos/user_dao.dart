@@ -4,6 +4,9 @@ import '../models/user.dart';
 /// details away. Any implementing classes will guarantee the
 /// below method signatures.
 abstract class UserDAO {
+  /// Returns the name of the Implementation
+  String getTitle();
+
   /// Returns a list of all persisted users
   List<User> getUsers();
 
