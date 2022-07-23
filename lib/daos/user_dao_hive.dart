@@ -36,8 +36,8 @@ class UserDAOHiveImpl implements UserDAO {
 
   @override
   List<User> getUsers() {
-    // TODO: implement getUsers
-    throw UnimplementedError();
+    List<User> users = userBox.toMap().values.toList();
+    return users;
   }
 
   @override
