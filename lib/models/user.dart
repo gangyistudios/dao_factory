@@ -1,9 +1,20 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:objectbox/objectbox.dart';
 
 part 'user.g.dart';
 
+@Entity()
 @HiveType(typeId: 1)
 class User {
+  /// Adding an extra field to [User] after the fact, we can see how Hive is
+  /// able to work with adding new fields, just ensure the HiveField number has
+  /// not yet been used and Hive handles the rest.
+  ///
+  /// As `id` is required for ObjectBox, but not for Hive (as it has
+  /// auto-incrementing keys), we have added it in the User model as a nullable
+  /// type
+  @HiveField(3)
+  int? id;
   @HiveField(0)
   String firstName;
   @HiveField(1)
@@ -12,6 +23,7 @@ class User {
   int age;
 
   User({
+    this.id,
     required this.firstName,
     required this.lastName,
     required this.age,
