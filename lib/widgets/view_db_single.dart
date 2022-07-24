@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../models/models.dart';
 import '../providers/providers.dart';
+import 'widgets.dart';
 
 /// Sub component of the DB Views section, for a single DB
 class DisplayBox extends StatelessWidget {
@@ -23,6 +24,9 @@ class DisplayBox extends StatelessWidget {
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
+                ClearButton(
+                  onPressed: () async => await userProvider.clearAll(dbType),
+                ),
                 Text(title),
                 snapshot.hasData
                     ? Column(
@@ -30,7 +34,7 @@ class DisplayBox extends StatelessWidget {
                             .map((user) => Text(user.toString()))
                             .toList(),
                       )
-                    : const Text('Loading')
+                    : const Text('Loading'),
               ],
             ),
           );

@@ -35,7 +35,7 @@ class UserDAOHiveImpl implements UserDAO {
       }
       userBox = await Hive.openBox<User>('userBox');
       _isHiveInit = true;
-      log('initialising UserDAOHiveImpl singleton');
+      log('initialised UserDAOHiveImpl singleton');
     }
   }
 
@@ -82,7 +82,7 @@ class UserDAOHiveImpl implements UserDAO {
   }
 
   @override
-  void clear() {
-    userBox.clear();
+  Future<void> clear() async {
+    await userBox.clear();
   }
 }

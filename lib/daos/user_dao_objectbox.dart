@@ -82,8 +82,11 @@ class UserDAOObjectBoxImpl implements UserDAO {
     }
   }
 
+  /// Although the objectbox implementation for clear() does not involve any
+  /// asynchrony, because Hive does, we have added that additional layer of
+  /// complexity here. A small price to pay for the abstraction...
   @override
-  void clear() {
+  Future<void> clear() async {
     userBox.removeAll();
   }
 }

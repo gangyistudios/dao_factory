@@ -105,4 +105,15 @@ class UserProvider extends ChangeNotifier {
         ? 'Deleted user $deletedUser'
         : 'User was not found!';
   }
+
+  /// Clears all users from the currently selected DAO Implementation
+  ///
+  /// Passing the dbType here for demonstration purposes, usually this would be
+  /// encapsulated completely within this class itself. I.e., we would just pick
+  /// the value of dbType as is done in [deleteUser] and [addUser]
+  Future<void> clearAll(DBType dbType) async {
+    UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
+    await userDao.clear();
+    notifyListeners();
+  }
 }

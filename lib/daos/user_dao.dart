@@ -29,5 +29,5 @@ abstract class UserDAO {
   User? deleteUser(User user);
 
   /// Clears/Deletes all persisted users
-  void clear();
+  Future<void> clear();
 }
