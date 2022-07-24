@@ -35,7 +35,7 @@ class DAOFactoryExample extends StatefulWidget {
 class _DAOFactoryExampleState extends State<DAOFactoryExample> {
   final List<UserDAO> userDAOList = [
     UserDAOHiveImpl(),
-    UserDAOSqfLiteImpl(),
+    UserDAOObjectBoxImpl(),
   ];
 
   int _selectedUserDAOIndex = 0;

@@ -1,1 +1,1 @@
-enum DBType { hive, sqflite }
+enum DBType { hive, objectbox }

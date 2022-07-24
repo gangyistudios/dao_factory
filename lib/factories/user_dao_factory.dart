@@ -2,9 +2,9 @@ import '../daos/daos.dart';
 import '../models/models.dart';
 
 /// This class decides which UserDAO implementation to return.
-/// See [UserDAOSqfLiteImpl] and [UserDAOHiveImpl].
+/// See [UserDAOObjectBoxImpl] and [UserDAOHiveImpl].
 /// This could further be abstracted using Provider so the logic
-/// used to decide whether `DBType` is `hive` or `sqflite` is moved
+/// used to decide whether `DBType` is `hive` or `objectbox` is moved
 /// out of UI code.
 
 class UserDAOFactory {
@@ -23,7 +23,7 @@ class UserDAOFactory {
     if (dbType == DBType.hive) {
       userDAO = UserDAOHiveImpl();
     } else {
-      userDAO = UserDAOSqfLiteImpl();
+      userDAO = UserDAOObjectBoxImpl();
     }
     await userDAO.init();
     return userDAO;

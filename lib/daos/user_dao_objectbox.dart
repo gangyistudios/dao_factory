@@ -1,7 +1,7 @@
 import '../models/models.dart';
 import 'user_dao.dart';
 
-class UserDAOSqfLiteImpl implements UserDAO {
+class UserDAOObjectBoxImpl implements UserDAO {
   @override
   Future<void> init() {
     // TODO: implement init
@@ -10,12 +10,12 @@ class UserDAOSqfLiteImpl implements UserDAO {
 
   @override
   String getTitle() {
-    return 'UserDAOSqfLiteImpl';
+    return 'UserDAOObjectBoxImpl';
   }
 
   @override
   DBType getImplType() {
-    return DBType.sqflite;
+    return DBType.objectbox;
   }
 
   @override

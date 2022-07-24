@@ -11,10 +11,10 @@ https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
 
 ## Introduction
 - You may want to use different persistence providers depending on the state of the app, or the platform. I.e. suppose there was a situation where:
-    - you had to use Hive for Android platform, and SQFLite for Ios. 
+    - you had to use Hive for Android platform, and ObjectBox for Ios. 
     - you had to use Hive if a User was not signed in, but once they were signed in, you would rather use Firestore.
 - Rather than scattering conditionals throughout your code, we can separate the implementation details of our persistence layer away from the application code using the Factory pattern. 
-- For ease of demonstration, this example uses 2 local storage implementations - Hive & sqflite, for the purposes of persisting a User object. 
+- For ease of demonstration, this example uses 2 local storage implementations - Hive & ObjectBox, for the purposes of persisting a User object. 
 - If you wanted to switch out the DAO implementation for unit testing, this would then become as simple as creating a new DAOImpl that implments the `UserDAO` interface, and then wiring up a switch in `UserDAOFactory` to return a mockDAO, i.e. `if (isTest == true) return UserDAOMockImpl();`
 
 ## Implementation 
@@ -25,7 +25,7 @@ public static DAO getDAO(String type) {
     if (type == 'hive') {
         return DAOHiveImpl();
     } else {
-        return DAOSQFLiteImpl();
+        return DAOObjectBoxImpl();
     }
 }
 ```

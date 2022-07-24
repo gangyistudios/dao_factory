@@ -23,7 +23,7 @@ class DAOSelection extends StatelessWidget {
       children: <Widget>[
         const Padding(
           padding: EdgeInsets.all(18.0),
-          child: Text('Select Hive or SQFLite Implementation for UserDAO'),
+          child: Text('Select Hive or ObjectBox Implementation for UserDAO'),
         ),
         for (var i = 0; i < userDAOList.length; i++)
           RadioListTile(
