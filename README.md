@@ -11,7 +11,7 @@ Easily switch between 3 different persistence DAO implementations with minimal c
 
 # Introduction
 - You may want to use different persistence providers depending on the state of the app, or the platform. I.e. suppose there was a situation where:
-    - You had to use Hive for Android platform, and ObjectBox for Ios. 
+    - You had to use Hive for Web platform, and ObjectBox for Android/Ios/Desktop. 
     - You had to use Hive if a User was not signed in, but once they were signed in, you would rather use Firestore.
     - You want to future-proof your application and do not want to tie yourself to any one particular implementation. For example, you may have started off with `sqflite` but realised later on you want your application to support Web, which `sqflite` does not support at the time of writing. Using this pattern, you can easily plug in a web-supported persistence implementation, such as `hive` with minimal refactoring. 
 - Rather than scattering conditionals throughout your code, we can separate the implementation details of our persistence layer away from the application code using the Factory pattern. 
