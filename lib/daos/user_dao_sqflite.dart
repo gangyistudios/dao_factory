@@ -20,7 +20,7 @@ class UserDAOSqfLiteImpl implements UserDAO {
   }
 
   @override
-  void deleteUser(User user) {
+  User? deleteUser(User user) {
     // TODO: implement deleteUser
   }
 

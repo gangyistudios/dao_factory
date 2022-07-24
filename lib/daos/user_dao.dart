@@ -19,6 +19,7 @@ abstract class UserDAO {
   /// Persists a user
   void addUser(User user);
 
-  /// Deletes the given user
-  void deleteUser(User user);
+  /// Returns the deleted user object if delete was successful, otherwise
+  /// will return null if user was not found.
+  User? deleteUser(User user);
 }

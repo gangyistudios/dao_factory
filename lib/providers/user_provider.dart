@@ -60,7 +60,9 @@ class UserProvider extends ChangeNotifier {
   /// Actual implementation details of the persistence layer are abstracted away
   /// from this class, instead defined in [UserDAOFactory].
   /// This also allows us to easily create and inject a mock DAO for testing.
-  void addUser() async {
+  ///
+  /// Returns a string of the result.
+  Future<String> addUser() async {
     /// This is only called after form was validated on submission, so we can
     /// safely assume firstName, lastName & age are populated. Hence, create new
     /// User object.
@@ -70,14 +72,17 @@ class UserProvider extends ChangeNotifier {
     /// In actual use cases, we can move that logic into the [UserDAOFactory]
     /// class, however passing the value in through the [DBType] for demonstration
     /// purposes.
-    UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
 
-    /// This is what all the work was for. The application does not need to
+    /// This is what all the work was for. (in real use cases we would not pass
+    /// dbType here and instead encapsulate that logic into the Factory class -
+    /// that is for demo only). The application does not need to
     /// know, & does not know, what implementation is being used for [UserDAO]
     /// under the hood.
-    userDao.addUser(user);
-    log('added user $user');
+    await UserDAOFactory.getUserDAO(dbType).then(
+      (userDAO) => userDAO.addUser(user),
+    );
     notifyListeners();
+    return 'Added user $user';
   }
 
   /// Passing the dbType here for demonstration purposes, usually this would be
@@ -86,5 +91,18 @@ class UserProvider extends ChangeNotifier {
     UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
     List<User> users = userDao.getUsers();
     return users;
+  }
+
+  /// See [addUser] for comments.
+  ///
+  /// Returns the a String of the result
+  Future<String> deleteUser() async {
+    User user = User(age: age, firstName: firstName, lastName: lastName);
+    UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
+    User? deletedUser = userDao.deleteUser(user);
+    notifyListeners();
+    return deletedUser != null
+        ? 'Deleted user $deletedUser'
+        : 'User was not found!';
   }
 }

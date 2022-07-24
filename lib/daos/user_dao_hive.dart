@@ -30,13 +30,18 @@ class UserDAOHiveImpl implements UserDAO {
   }
 
   @override
-  void deleteUser(User user) {
+  User? deleteUser(User user) {
     Map<dynamic, User> userMap = userBox.toMap();
-    String key = userMap.keys.firstWhere(
+    int? key = userMap.keys.firstWhere(
       (k) => userMap[k] == user,
       orElse: () => null,
     );
-    userBox.delete(key);
+    if (key != null) {
+      userBox.delete(key);
+      return user;
+    } else {
+      return null;
+    }
   }
 
   @override

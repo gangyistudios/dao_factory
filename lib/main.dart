@@ -56,7 +56,12 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
               selectedIndex: _selectedUserDAOIndex,
               onChanged: _setSelectedUserDAOIndex,
             ),
-            const NewUserForm(),
+            Row(
+              children: const [
+                NewUserForm(),
+                DeleteUserForm(),
+              ],
+            ),
             const DataDisplay(),
           ],
         ),

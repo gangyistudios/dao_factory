@@ -41,7 +41,7 @@ class NewUserFormState extends State<NewUserForm> {
                 onSaved: (value) => userProvider.age = int.parse(value!),
                 numeric: true,
               ),
-              SubmitButton(formKey: _formKey),
+              SubmitButton(formKey: _formKey, onSubmit: userProvider.addUser),
             ],
           ),
         ),
