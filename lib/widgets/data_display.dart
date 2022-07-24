@@ -11,6 +11,7 @@ class DataDisplay extends StatelessWidget {
   Widget build(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
         DisplayBox(title: 'HIVE DB', dbType: DBType.hive),
         DisplayBox(title: 'SQFLITE DB', dbType: DBType.sqflite),

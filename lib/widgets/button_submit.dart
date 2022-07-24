@@ -23,8 +23,7 @@ class SubmitButton extends StatelessWidget {
             /// the UserProvider's age, firstName & lastName variables, which are
             /// then persisted through a call to its addUser() method.
             _formKey.currentState!.save();
-            Provider.of<UserProvider>(context, listen: false)
-                .addUser(DBType.hive);
+            Provider.of<UserProvider>(context, listen: false).addUser();
             ScaffoldMessenger.of(context).showSnackBar(
               const SnackBar(content: Text('Saved')),
             );
