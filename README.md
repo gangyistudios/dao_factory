@@ -32,3 +32,6 @@ public static DAO getDAO(String type) {
 4. Create your DAO implementation classes, i.e. one for Hive & one for Firestore, which `implement` the DAO interface, ensuring they have the same guaranteed functionalities. 
 5. Before making any calls to the persistence layer, check whether the user is logged in, and use the factory method to retrieve and use the desired DAO implemenation. 
 
+
+
+

@@ -56,6 +56,10 @@ class UserProvider extends ChangeNotifier {
     _dbType = dbType;
   }
 
+  /// Adds a user to the persistence layer.
+  /// Actual implementation details of the persistence layer are abstracted away
+  /// from this class, instead defined in [UserDAOFactory].
+  /// This also allows us to easily create and inject a mock DAO for testing.
   void addUser() async {
     /// This is only called after form was validated on submission, so we can
     /// safely assume firstName, lastName & age are populated. Hence, create new
