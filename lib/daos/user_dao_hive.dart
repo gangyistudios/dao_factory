@@ -1,6 +1,6 @@
-import 'package:flutter_dao_factory/models/user.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
+import '../models/models.dart';
 import 'user_dao.dart';
 
 class UserDAOHiveImpl implements UserDAO {
@@ -22,6 +22,11 @@ class UserDAOHiveImpl implements UserDAO {
   @override
   String getTitle() {
     return 'UserDAOHiveImpl';
+  }
+
+  @override
+  DBType getImplType() {
+    return DBType.hive;
   }
 
   @override

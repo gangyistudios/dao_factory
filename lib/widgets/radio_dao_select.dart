@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'daos/daos.dart';
+import '../daos/daos.dart';
 
 /// Convenience widget to demonstrate selecting
 /// bewteen UserDAO implementations.

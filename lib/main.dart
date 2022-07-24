@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'dao_selection.dart';
+import 'widgets/radio_dao_select.dart';
 import 'daos/daos.dart';
 import 'providers/providers.dart';
 import 'widgets/widgets.dart';
@@ -15,9 +15,12 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      title: 'DAO Factory Example',
-      home: DAOFactoryExample(),
+    return ChangeNotifierProvider(
+      create: (BuildContext context) => UserProvider(),
+      child: const MaterialApp(
+        title: 'DAO Factory Example',
+        home: DAOFactoryExample(),
+      ),
     );
   }
 }
@@ -40,31 +43,32 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
   void _setSelectedUserDAOIndex(int? index) {
     setState(() {
       _selectedUserDAOIndex = index!;
+
+      /// Set the DAO implementation in [UserProvider] from selected Radio
+      Provider.of<UserProvider>(context, listen: false).dbType =
+          userDAOList[index].getImplType();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    return ChangeNotifierProvider(
-      create: (BuildContext context) => UserProvider(),
-      child: Scaffold(
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: <Widget>[
-            DAOSelection(
-              userDAOList: userDAOList,
-              selectedIndex: _selectedUserDAOIndex,
-              onChanged: _setSelectedUserDAOIndex,
-            ),
-            Row(
-              children: const [
-                NewUserForm(),
-                DeleteUserForm(),
-              ],
-            ),
-            const DataDisplay(),
-          ],
-        ),
+    return Scaffold(
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: <Widget>[
+          DAOSelection(
+            userDAOList: userDAOList,
+            selectedIndex: _selectedUserDAOIndex,
+            onChanged: _setSelectedUserDAOIndex,
+          ),
+          Row(
+            children: const [
+              NewUserForm(),
+              DeleteUserForm(),
+            ],
+          ),
+          const DataDisplay(),
+        ],
       ),
     );
   }

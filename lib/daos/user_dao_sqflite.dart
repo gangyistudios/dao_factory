@@ -1,5 +1,4 @@
-import 'package:flutter_dao_factory/models/user.dart';
-
+import '../models/models.dart';
 import 'user_dao.dart';
 
 class UserDAOSqfLiteImpl implements UserDAO {
@@ -12,6 +11,11 @@ class UserDAOSqfLiteImpl implements UserDAO {
   @override
   String getTitle() {
     return 'UserDAOSqfLiteImpl';
+  }
+
+  @override
+  DBType getImplType() {
+    return DBType.sqflite;
   }
 
   @override

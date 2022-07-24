@@ -1,11 +1,16 @@
-import '../models/user.dart';
+import '../models/models.dart';
 
 /// This is the interface used to abstract implementation
 /// details away. Any implementing classes will guarantee the
 /// below method signatures.
 abstract class UserDAO {
   /// Returns the name of the Implementation
+  /// Only really used for demonstration purposes here
   String getTitle();
+
+  /// Returns the type of the Implementation
+  /// Only really used for demonstration purposes here
+  DBType getImplType();
 
   /// Initialise dao
   Future<void> init();
