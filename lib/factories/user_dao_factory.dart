@@ -22,8 +22,10 @@ class UserDAOFactory {
     UserDAO userDAO;
     if (dbType == DBType.hive) {
       userDAO = UserDAOHiveImpl();
-    } else {
+    } else if (dbType == DBType.objectbox) {
       userDAO = UserDAOObjectBoxImpl();
+    } else {
+      userDAO = UserDAOMockImpl();
     }
     await userDAO.init();
     return userDAO;

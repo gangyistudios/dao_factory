@@ -36,6 +36,7 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
   final List<UserDAO> userDAOList = [
     UserDAOHiveImpl(),
     UserDAOObjectBoxImpl(),
+    UserDAOMockImpl(),
   ];
 
   int _selectedUserDAOIndex = 0;
@@ -67,7 +68,9 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
               DeleteUserForm(),
             ],
           ),
-          const DatabasesView(),
+          DatabasesView(
+            userDAOList: userDAOList,
+          ),
         ],
       ),
     );

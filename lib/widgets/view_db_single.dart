@@ -34,7 +34,7 @@ class DisplayBox extends StatelessWidget {
                             .map((user) => Text(user.toString()))
                             .toList(),
                       )
-                    : const Text('Loading'),
+                    : const SizedBox.shrink(),
               ],
             ),
           );

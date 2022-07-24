@@ -29,5 +29,9 @@ abstract class UserDAO {
   User? deleteUser(User user);
 
   /// Clears/Deletes all persisted users
+  ///
+  /// Although 2 out of 3 implementations in this example do not involve any
+  /// asynchrony, we need to return a Future due to Hive's clear implementation
+  /// requiring an await. Small price to pay for abstraction.
   Future<void> clear();
 }

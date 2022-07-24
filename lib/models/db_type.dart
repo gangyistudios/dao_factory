@@ -1,1 +1,1 @@
-enum DBType { hive, objectbox }
+enum DBType { hive, objectbox, mock }

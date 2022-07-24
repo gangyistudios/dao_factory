@@ -69,7 +69,7 @@ class UserDAOObjectBoxImpl implements UserDAO {
   @override
   User? deleteUser(User user) {
     List<User?> users = getAllUsers();
-    User? userToDelete = users.firstWhereOrNull(
+    User? userToDelete = users.lastWhereOrNull(
       (k) => k == user,
     );
     if (userToDelete != null) {
