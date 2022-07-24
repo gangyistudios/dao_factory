@@ -1,5 +1,6 @@
 export 'button_clear.dart';
 export 'button_submit.dart';
+export 'input_user.dart';
 export 'view_db.dart';
 export 'view_db_single.dart';
 export 'form_user_delete.dart';

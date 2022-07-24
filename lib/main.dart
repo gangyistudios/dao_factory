@@ -56,20 +56,12 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
     return Scaffold(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: <Widget>[
-          DAOSelection(
+        children: [
+          const UserInput(),
+          DatabasesView(
             userDAOList: userDAOList,
             selectedIndex: _selectedUserDAOIndex,
             onChanged: _setSelectedUserDAOIndex,
-          ),
-          Row(
-            children: const [
-              NewUserForm(),
-              DeleteUserForm(),
-            ],
-          ),
-          DatabasesView(
-            userDAOList: userDAOList,
           ),
         ],
       ),

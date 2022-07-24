@@ -25,15 +25,23 @@ class DAOSelection extends StatelessWidget {
           padding: EdgeInsets.all(18.0),
           child: Text('Select Hive or ObjectBox Implementation for UserDAO'),
         ),
-        for (var i = 0; i < userDAOList.length; i++)
-          RadioListTile(
-            title: Text(userDAOList[i].getTitle()),
-            value: i,
-            groupValue: selectedIndex,
-            selected: i == selectedIndex,
-            activeColor: Colors.black,
-            onChanged: onChanged,
-          ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            for (var i = 0; i < userDAOList.length; i++)
+              Expanded(
+                child: RadioListTile(
+                  title: Text(userDAOList[i].getTitle()),
+                  value: i,
+                  groupValue: selectedIndex,
+                  selected: i == selectedIndex,
+                  activeColor: Colors.black,
+                  onChanged: onChanged,
+                ),
+              ),
+          ],
+        ),
       ],
     );
   }
