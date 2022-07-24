@@ -36,6 +36,12 @@ public static DAO getDAO(String type) {
 UserDAOFactory.getUserDAO().addUser();
 ```
 
+# Generating code
+- Ensure the generators are installed as dev dependencies, i.e. `build_runner`, and `hive_generator` for Hive and `objectbox_generator` for ObjectBox
+```
+flutter pub run build_runner build
+```
+
 ## Feedback 
 Please feel free to comment any better solutions or feedback. We are always open for new ideas!
 
