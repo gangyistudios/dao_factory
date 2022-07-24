@@ -4,13 +4,12 @@ Implementing the dao factory pattern in Flutter.
 
 Demonstrates the use of varied DAO implementations as defined in a configuration file, as well as switching the DAO  implmentation during runtime. 
 
-References: 
-https://refactoring.guru/design-patterns/factory-method
-https://medium.com/flutter-community/flutter-design-patterns-10-factory-method-c53ad11d863f 
-https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
-https://medium.com/flutter-community/flutter-design-patterns-1-singleton-437f04e923ce 
+# Demo 
+Easily switch between 3 different persistence DAO implementations with minimal changes to application layer code. 
 
-## Introduction
+![alt text](demo.gif)
+
+# Introduction
 - You may want to use different persistence providers depending on the state of the app, or the platform. I.e. suppose there was a situation where:
     - You had to use Hive for Android platform, and ObjectBox for Ios. 
     - You had to use Hive if a User was not signed in, but once they were signed in, you would rather use Firestore.
@@ -19,7 +18,7 @@ https://medium.com/flutter-community/flutter-design-patterns-1-singleton-437f04e
 - For ease of demonstration, this example uses 2 local storage implementations - Hive & ObjectBox, for the purposes of persisting a User object. 
 - If you wanted to switch out the DAO implementation for unit testing, this would then become as simple as creating a new DAOImpl that implments the `UserDAO` interface, and then wiring up a switch in `UserDAOFactory` to return a mockDAO, i.e. `if (isTest == true) return UserDAOMockImpl();`
 
-## Implementation 
+# Implementation 
 1. Create a DAOFactory class. 
 2. This class will contain a getDAO method which returns the appropriate DAO implementation class based on some input. 
 ```dart
@@ -38,18 +37,17 @@ public static DAO getDAO(String type) {
 UserDAOFactory.getUserDAO().addUser();
 ```
 
-# Demo 
-Easily switch between 3 different persistence DAO implementations with minimal changes to application layer code. 
-
-![alt text](demo.gif)
-
 # Generating code
 - Ensure the generators are installed as dev dependencies, i.e. `build_runner`, and `hive_generator` for Hive and `objectbox_generator` for ObjectBox
 ```
 flutter pub run build_runner build
 ```
 
-# TODO 
+# References
+https://refactoring.guru/design-patterns/factory-method
+https://medium.com/flutter-community/flutter-design-patterns-10-factory-method-c53ad11d863f 
+https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
+https://medium.com/flutter-community/flutter-design-patterns-1-singleton-437f04e923ce 
 
 # Feedback 
 Please feel free to comment any better solutions or feedback. We are always open for new ideas!
