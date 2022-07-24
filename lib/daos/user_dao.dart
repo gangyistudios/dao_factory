@@ -16,7 +16,7 @@ abstract class UserDAO {
   Future<void> init();
 
   /// Returns a list of all persisted users
-  List<User> getUsers();
+  List<User> getAllUsers();
 
   /// Returns a list of users with the given name
   List<User> getUsersByName(String name);

@@ -8,6 +8,7 @@ References:
 https://refactoring.guru/design-patterns/factory-method
 https://medium.com/flutter-community/flutter-design-patterns-10-factory-method-c53ad11d863f 
 https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
+https://medium.com/flutter-community/flutter-design-patterns-1-singleton-437f04e923ce 
 
 ## Introduction
 - You may want to use different persistence providers depending on the state of the app, or the platform. I.e. suppose there was a situation where:
@@ -43,7 +44,6 @@ flutter pub run build_runner build
 ```
 
 # TODO 
-- Convert DAOImpl to singleton, so they are not re-initialised everytime the Factory retrieves them. 
 
 # Feedback 
 Please feel free to comment any better solutions or feedback. We are always open for new ideas!

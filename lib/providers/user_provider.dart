@@ -89,7 +89,7 @@ class UserProvider extends ChangeNotifier {
   /// encapsulated completely within this class itself.
   Future<List<User>> getUsers(DBType dbType) async {
     UserDAO userDao = await UserDAOFactory.getUserDAO(dbType);
-    List<User> users = userDao.getUsers();
+    List<User> users = userDao.getAllUsers();
     return users;
   }
 
