@@ -9,7 +9,7 @@ https://refactoring.guru/design-patterns/factory-method
 https://medium.com/flutter-community/flutter-design-patterns-10-factory-method-c53ad11d863f 
 https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
 
-## Possible use case 
+## Introduction
 - You may want to use different persistence providers depending on the state of the app, or the platform. I.e. suppose there was a situation where:
     - you had to use Hive for Android platform, and SQFLite for Ios. 
     - you had to use Hive if a User was not signed in, but once they were signed in, you would rather use Firestore.
