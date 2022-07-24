@@ -1,5 +1,6 @@
 import 'dart:developer';
 
+import 'package:collection/collection.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 import '../models/models.dart';
@@ -56,9 +57,8 @@ class UserDAOHiveImpl implements UserDAO {
   @override
   User? deleteUser(User user) {
     Map<dynamic, User> userMap = userBox.toMap();
-    int? key = userMap.keys.firstWhere(
+    int? key = userMap.keys.firstWhereOrNull(
       (k) => userMap[k] == user,
-      orElse: () => null,
     );
     if (key != null) {
       userBox.delete(key);

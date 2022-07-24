@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:collection/collection.dart';
 
 import '../models/models.dart';
 import '../objectbox.g.dart';
@@ -55,11 +56,18 @@ class UserDAOObjectBoxImpl implements UserDAO {
 
   @override
   User? deleteUser(User user) {
-    // List<User> users = getAllUsers();
-    // int? id = users.firstWhere(
-    //   (k) => k == user,
-    //   orElse: () => null,
-    // );
+    List<User?> users = getAllUsers();
+    User? userToDelete = users.firstWhereOrNull(
+      (k) => k == user,
+    );
+    if (userToDelete != null) {
+      //// As ObjectBox automatically assigns an id if none is passed, after
+      /// retrieving the first match from the box, we get its id to delete
+      userBox.remove(userToDelete.id!);
+      return user;
+    } else {
+      return null;
+    }
   }
 
   @override

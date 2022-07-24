@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../models/models.dart';
 import '../providers/providers.dart';
 
+/// Sub component of the DB Views section, for a single DB
 class DisplayBox extends StatelessWidget {
   const DisplayBox({Key? key, required this.title, required this.dbType})
       : super(key: key);

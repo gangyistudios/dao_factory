@@ -67,7 +67,7 @@ class _DAOFactoryExampleState extends State<DAOFactoryExample> {
               DeleteUserForm(),
             ],
           ),
-          const DataDisplay(),
+          const DatabasesView(),
         ],
       ),
     );

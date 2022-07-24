@@ -4,8 +4,8 @@ import '../models/models.dart';
 import 'widgets.dart';
 
 /// Widget to visualise the data stored within Hive & ObjectBox DBs.
-class DataDisplay extends StatelessWidget {
-  const DataDisplay({Key? key}) : super(key: key);
+class DatabasesView extends StatelessWidget {
+  const DatabasesView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
