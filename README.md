@@ -1,4 +1,4 @@
-# flutter_dao_factory
+# Dao Factory Design Pattern in Flutter
 
 Implementing the dao factory pattern in Flutter. 
 
