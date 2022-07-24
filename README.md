@@ -15,6 +15,7 @@ https://stackoverflow.com/questions/6401543/what-is-dao-factory-pattern
     - you had to use Hive if a User was not signed in, but once they were signed in, you would rather use Firestore.
 - Rather than scattering conditionals throughout your code, we can separate the implementation details of our persistence layer away from the application code using the Factory pattern. 
 - For ease of demonstration, this example uses 2 local storage implementations - Hive & sqflite, for the purposes of persisting a User object. 
+- If you wanted to switch out the DAO implementation for unit testing, this would then become as simple as creating a new DAOImpl that implments the `UserDAO` interface, and then wiring up a switch in `UserDAOFactory` to return a mockDAO, i.e. `if (isTest == true) return UserDAOMockImpl();`
 
 ## Implementation 
 1. Create a DAOFactory class. 
@@ -30,5 +31,11 @@ public static DAO getDAO(String type) {
 ```
 3. Create a DAO interface. (Abstract class in  Dart). 
 4. Create your DAO implementation classes, i.e. one for Hive & one for Firestore, which `implement` the DAO interface, ensuring they have the same guaranteed functionalities. 
-5. Before making any calls to the persistence layer, check whether the user is logged in, and use the factory method to retrieve and use the desired DAO implemenation. 
+5. From the application code, we can make an implementation-agnostic call to the persistence layer, letting the `UserDAOFactory` object decide which DAO implementation to use.: 
+```dart
+UserDAOFactory.getUserDAO().addUser();
+```
+
+## Feedback 
+Please feel free to comment any better solutions or feedback. We are always open for new ideas!
 
