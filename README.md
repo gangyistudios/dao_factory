@@ -1,5 +1,7 @@
 # Dao Factory Design Pattern in Flutter
 
+See the Medium article [here](https://medium.com/@gangyistudios/implementing-the-dao-factory-singleton-design-pattern-in-flutter-adb9821495e3)!
+
 Implementing the dao factory pattern in Flutter. 
 
 Demonstrates the design pattern utilising Factory method and Singleton, with Provider, in order to build an architecture which decouples the DAO implementation details away from application code, allowing the implementation to be easily switched with minimal refactoring at compile or runtime. 
