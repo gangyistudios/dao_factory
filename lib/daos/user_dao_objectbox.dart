@@ -78,6 +78,7 @@ class UserDAOObjectBoxImpl implements UserDAO {
   @override
   List<User> getUsersByName(String name) {
     // TODO: implement getUsersByName
+    // Left as exercise for the reader.
     throw UnimplementedError();
   }
 }
