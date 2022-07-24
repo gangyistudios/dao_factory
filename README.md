@@ -2,7 +2,7 @@
 
 Implementing the dao factory pattern in Flutter. 
 
-Demonstrates the use of varied DAO implementations as defined in a configuration file, as well as switching the DAO  implmentation during runtime. 
+Demonstrates the design pattern utilising Factory method and Singleton, with Flutter Provider, in order to build an architecture which decouples the DAO implementation details away from application code, allowing the implementation to be easily switched with minimal refactoring at compile or runtime. 
 
 # Demo 
 Easily switch between 3 different persistence DAO implementations with minimal changes to application layer code. 
