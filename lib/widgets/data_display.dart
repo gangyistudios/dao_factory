@@ -13,8 +13,8 @@ class DataDisplay extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: const [
-        DisplayBox(title: 'HIVE DB', dbType: DBType.hive),
-        DisplayBox(title: 'OBJECTBOX DB', dbType: DBType.objectbox),
+        DisplayBox(title: 'HIVE DB - USERS', dbType: DBType.hive),
+        DisplayBox(title: 'OBJECTBOX DB - USERS', dbType: DBType.objectbox),
       ],
     );
   }

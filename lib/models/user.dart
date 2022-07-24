@@ -31,7 +31,7 @@ class User {
 
   @override
   String toString() {
-    return 'User[firstName: $firstName, lastName: $lastName, age: $age]';
+    return '[firstName: $firstName, lastName: $lastName, age: $age]';
   }
 
   /// Overwrite comparison methods, so User with same firstName, lastName, age

@@ -31,7 +31,7 @@ public static DAO getDAO(String type) {
 }
 ```
 3. Create a DAO interface. (Abstract class in  Dart). 
-4. Create your DAO implementation classes, i.e. one for Hive & one for Firestore, which `implement` the DAO interface, ensuring they have the same guaranteed functionalities. 
+4. Create your DAO implementation classes as [***Singletons***](https://refactoring.guru/design-patterns/singleton), i.e. one for Hive & one for ObjectBox, which implement the DAO interface, ensuring they have the same guaranteed functionalities. 
 5. From the application code, we can make an implementation-agnostic call to the persistence layer, letting the `UserDAOFactory` object decide which DAO implementation to use.: 
 ```dart
 UserDAOFactory.getUserDAO().addUser();
