@@ -50,6 +50,19 @@ class UserDAOHiveImpl implements UserDAO {
   }
 
   @override
+  List<User> getAllUsers() {
+    List<User> users = userBox.toMap().values.toList();
+    return users;
+  }
+
+  @override
+  List<User> getUsersByName(String name) {
+    // TODO: implement getUsersByName
+    // Left as exercise for the reader.
+    throw UnimplementedError();
+  }
+
+  @override
   void addUser(User user) {
     userBox.add(user);
   }
@@ -69,15 +82,7 @@ class UserDAOHiveImpl implements UserDAO {
   }
 
   @override
-  List<User> getAllUsers() {
-    List<User> users = userBox.toMap().values.toList();
-    return users;
-  }
-
-  @override
-  List<User> getUsersByName(String name) {
-    // TODO: implement getUsersByName
-    // Left as exercise for the reader.
-    throw UnimplementedError();
+  void clear() {
+    userBox.clear();
   }
 }

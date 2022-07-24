@@ -50,6 +50,18 @@ class UserDAOObjectBoxImpl implements UserDAO {
   }
 
   @override
+  List<User> getAllUsers() {
+    return userBox.getAll();
+  }
+
+  @override
+  List<User> getUsersByName(String name) {
+    // TODO: implement getUsersByName
+    // Left as exercise for the reader.
+    throw UnimplementedError();
+  }
+
+  @override
   void addUser(User user) {
     userBox.put(user);
   }
@@ -71,14 +83,7 @@ class UserDAOObjectBoxImpl implements UserDAO {
   }
 
   @override
-  List<User> getAllUsers() {
-    return userBox.getAll();
-  }
-
-  @override
-  List<User> getUsersByName(String name) {
-    // TODO: implement getUsersByName
-    // Left as exercise for the reader.
-    throw UnimplementedError();
+  void clear() {
+    userBox.removeAll();
   }
 }

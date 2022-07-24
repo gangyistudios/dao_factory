@@ -4,6 +4,9 @@ import '../models/models.dart';
 /// details away. Any implementing classes will guarantee the
 /// below method signatures.
 abstract class UserDAO {
+  /// Initialise dao
+  Future<void> init();
+
   /// Returns the name of the Implementation
   /// Only really used for demonstration purposes here
   String getTitle();
@@ -11,9 +14,6 @@ abstract class UserDAO {
   /// Returns the type of the Implementation
   /// Only really used for demonstration purposes here
   DBType getImplType();
-
-  /// Initialise dao
-  Future<void> init();
 
   /// Returns a list of all persisted users
   List<User> getAllUsers();
@@ -27,4 +27,7 @@ abstract class UserDAO {
   /// Returns the deleted user object if delete was successful, otherwise
   /// will return null if user was not found.
   User? deleteUser(User user);
+
+  /// Clears/Deletes all persisted users
+  void clear();
 }
