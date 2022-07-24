@@ -42,7 +42,10 @@ UserDAOFactory.getUserDAO().addUser();
 flutter pub run build_runner build
 ```
 
-## Feedback 
+# TODO 
+- Convert DAOImpl to singleton, so they are not re-initialised everytime the Factory retrieves them. 
+
+# Feedback 
 Please feel free to comment any better solutions or feedback. We are always open for new ideas!
 
 
